@@ -1,0 +1,521 @@
+/*
+Theme Name: Ukraine Sale
+Theme URI: https://github.com/zMeowz/ukraine-sale
+Description: Modern WooCommerce theme for trending products with 4 categories
+Author: zMeowz
+Author URI: https://github.com/zMeowz
+Template: shopstore-free-woocomerce-theme
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* ============================================
+   GENERAL STYLES
+   ============================================ */
+
+:root {
+  --primary-color: #ff6b35;
+  --secondary-color: #004e89;
+  --accent-color: #f7931e;
+  --light-bg: #f8f9fa;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --border-color: #e1e8ed;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.ukraine-sale-hero {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.ukraine-sale-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.ukraine-sale-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ukraine-sale-hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.ukraine-sale-hero p {
+  font-size: 18px;
+  opacity: 0.95;
+  margin-bottom: 30px;
+}
+
+.ukraine-sale-hero-btn {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 14px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-color);
+}
+
+.ukraine-sale-hero-btn:hover {
+  background: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   CATEGORIES SECTION
+   ============================================ */
+
+.ukraine-sale-categories {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ukraine-sale-section-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: var(--text-dark);
+  position: relative;
+}
+
+.ukraine-sale-section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* ============================================
+   CATEGORY GRID
+   ============================================ */
+
+.ukraine-sale-category {
+  margin-bottom: 80px;
+}
+
+.ukraine-sale-category-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.ukraine-sale-category-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.ukraine-sale-category-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.ukraine-sale-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* ============================================
+   PRODUCT CARD
+   ============================================ */
+
+.ukraine-sale-product-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ukraine-sale-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+}
+
+.ukraine-sale-product-image {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: var(--light-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+}
+
+.ukraine-sale-product-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary-color);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ukraine-sale-product-content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ukraine-sale-product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.ukraine-sale-product-description {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.ukraine-sale-product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.ukraine-sale-product-price {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ukraine-sale-product-price-original {
+  font-size: 12px;
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
+.ukraine-sale-product-price-sale {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.ukraine-sale-product-btn {
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.ukraine-sale-product-btn:hover {
+  background: var(--primary-color);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   GOOGLE ADS BLOCKS
+   ============================================ */
+
+.ukraine-sale-ads-block {
+  background: var(--light-bg);
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  margin: 40px 0;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ukraine-sale-ads-block.ads-top {
+  margin: 0 0 40px 0;
+}
+
+.ukraine-sale-ads-block.ads-middle {
+  margin: 40px 0;
+}
+
+.ukraine-sale-ads-block.ads-bottom {
+  margin: 40px 0 0 0;
+}
+
+.ukraine-sale-ads-placeholder {
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ============================================
+   ADVANTAGES SECTION
+   ============================================ */
+
+.ukraine-sale-advantages {
+  background: var(--light-bg);
+  padding: 60px 20px;
+  margin: 60px 0;
+  border-radius: 12px;
+}
+
+.ukraine-sale-advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ukraine-sale-advantage-item {
+  text-align: center;
+  padding: 20px;
+}
+
+.ukraine-sale-advantage-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.ukraine-sale-advantage-item h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.ukraine-sale-advantage-item p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ukraine-sale-hero {
+    padding: 50px 20px;
+  }
+
+  .ukraine-sale-hero h1 {
+    font-size: 32px;
+  }
+
+  .ukraine-sale-section-title {
+    font-size: 28px;
+  }
+
+  .ukraine-sale-products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .ukraine-sale-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ukraine-sale-advantages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .ukraine-sale-hero h1 {
+    font-size: 24px;
+  }
+
+  .ukraine-sale-hero p {
+    font-size: 16px;
+  }
+
+  .ukraine-sale-section-title {
+    font-size: 22px;
+  }
+
+  .ukraine-sale-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ukraine-sale-product-card {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .ukraine-sale-product-image {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.ukraine-sale-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.ukraine-sale-btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.ukraine-sale-btn-primary:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.ukraine-sale-btn-secondary {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.ukraine-sale-btn-secondary:hover {
+  background: var(--primary-color);
+}
